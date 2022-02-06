@@ -12,16 +12,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        status.text = " "
     }
     
-    func textFieldShouldReturn(_ inputLastName: UITextField) -> Bool {
-        inputLastName.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldDidEndEditing(_ inputLastName: UITextField) -> Bool {
-        inputLastName.resignFirstResponder()
-        return true
+   
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     @IBOutlet weak var inputFirstName: UITextField!
     
@@ -33,13 +29,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textViewField: UITextView!
     
     @IBOutlet weak var status: UILabel!
+
     var fullName = " "
     @IBAction func add(_ sender: Any) {
         fullName = inputFirstName.text! + inputLastName.text!
         
         textViewField.text = "FullName: " + fullName + "\n"
-        textViewField.text = "Country: " + inputCountry.text! + "\n"
-        textViewField.text = "Age: " + inputAge.text! + "\n"
+        textViewField.text += "Country: " + inputCountry.text! + "\n"
+        textViewField.text += "Age: " + inputAge.text! + "\n"
         
     }
     @IBAction func submit(_ sender: Any) {
@@ -67,6 +64,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         inputCountry.text = ""
         inputAge.text = ""
         textViewField.text = ""
+        status.text = ""
     }
 }
 
