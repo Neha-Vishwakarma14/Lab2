@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     var fullName = " "
     @IBAction func add(_ sender: Any) {
-        fullName = inputFirstName.text! + inputLastName.text!
+        fullName = inputFirstName.text! + " " + inputLastName.text!
         
         textViewField.text = "FullName: " + fullName + "\n"
         textViewField.text += "Country: " + inputCountry.text! + "\n"
