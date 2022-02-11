@@ -4,6 +4,7 @@
 //
 //  Created by user203147 on 2/5/22.
 //
+// Group Members: Neha Vishwakarma, Kamalpreet kaur, Hemil Tanakhia, Dhrupal Desai
 
 import UIKit
 
@@ -11,14 +12,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // Setting label text to blank when the view loads
         status.text = " "
     }
     
-   
+   // hiding the keyboard when user clicks outside the keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    // declaring outlet variables
     @IBOutlet weak var inputFirstName: UITextField!
     
     @IBOutlet weak var inputLastName: UITextField!
@@ -31,6 +34,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var status: UILabel!
 
     var fullName = " "
+    // function to add the user data and display in the text box
     @IBAction func add(_ sender: Any) {
         fullName = inputFirstName.text! + " " + inputLastName.text!
         
@@ -39,15 +43,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textViewField.text += "Age: " + inputAge.text! + "\n"
         
     }
+    
+    // function to update the status message on the label when submit is clicked
     @IBAction func submit(_ sender: Any) {
+        // checking if all the fields are filled by calling checkstatus function
         let statusVal:Bool = checkStatus();
+        
         if(statusVal){
             status.text = "Submitted sucessfully"
         }
         else{
-            status.text = "All the fields are Mandatory!"
+            status.text = "Complete the missing info!"
         }
     }
+    // function to check if all the fields are filled
     func checkStatus() -> Bool {
         
         if( inputFirstName.text == "" || inputLastName.text == "" || inputAge.text == "" || inputCountry.text == "") {
@@ -58,6 +67,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
+    // function to clear all the fields 
     @IBAction func clear(_ sender: Any) {
         inputFirstName.text = ""
         inputLastName.text = ""
