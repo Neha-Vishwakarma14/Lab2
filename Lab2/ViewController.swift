@@ -14,11 +14,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Setting label text to blank when the view loads
         status.text = " "
+        
+        //setting delegates for return key
+        inputFirstName.delegate = self
+        inputLastName.delegate = self
+        inputAge.delegate = self
+        inputCountry.delegate = self
+        textViewField.isUserInteractionEnabled = false
     }
     
    // hiding the keyboard when user clicks outside the keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    //Hiding keypoard on press return.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     // declaring outlet variables
@@ -67,7 +80,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-    // function to clear all the fields 
+    // function to clear all the fields
     @IBAction func clear(_ sender: Any) {
         inputFirstName.text = ""
         inputLastName.text = ""
